@@ -1,6 +1,5 @@
 import math
 
-
 class WarmerFluidProperties:
     def __init__(self, m_w, p, k_f, v, capT1, capC_p, alpha, capPR):
         self.m_w = m_w
@@ -41,6 +40,17 @@ class ShellData:
         self.capN_b = capN_b
         self.capP_t = capP_t
         self.c = c
+
+class FlowAreaData:
+    def __init__(self, capA_t, capA_s):
+        self.capA_t = capA_t
+        self.capA_s = capA_s
+
+
+class FluidVelocitiesData:
+    def __init__(self, capV_t, capV_s):
+        self.capV_t = capV_t
+        self.capV_s = capV_s
 
 
 def warmer_fluid_input():
@@ -86,10 +96,11 @@ def shell_input():
     return ShellData.capD_S, ShellData.capB, ShellData.capN_b, ShellData.capP_t, ShellData.c
 
 
-warmerProperties = WarmerFluidProperties(21.4, 995, .625, (7.05 * math.pow(10, -7)), 43.3, 4179, (1.45 * math.pow(10, -7)), 4.69)
-colderProperties = ColderFluidProperties(18.88, 62.3, .606, (9.16 * math.pow(10, -7)), 18.3, 4181, (1.45 * math.pow(10, -7)), 6.32)
-tubingProperties = TubingSizes(16.55, 196, 19.07, 2)
-shellProperties = ShellData(438.2, 304.8, 15, 25.4, 6.33)
+warmerProperties = WarmerFluidProperties(float(21.4), float(995), float(.625), float((7.05 * math.pow(10, -7))), float(43.3), float(4179), float((1.45 * math.pow(10, -7))), float(4.69))
+colderProperties = ColderFluidProperties(float(18.88), float(62.3), float(.606), float((9.16 * math.pow(10, -7))), float(18.3), float(4181), float((1.45 * math.pow(10, -7))), float(6.32))
+tubingProperties = TubingSizes(float(16.55), float(196), float(19.07), float(2))
+shellProperties = ShellData(float(438.2), float(304.8), float(15), float(25.4), float(6.33))
+flowData = FlowAreaData(float(0), float(0))
 
 
 # warmer_fluid_input()
@@ -97,25 +108,20 @@ shellProperties = ShellData(438.2, 304.8, 15, 25.4, 6.33)
 # tubing_sizes_input()
 # shell_input()
 
-print("m_w: " + str(warmerProperties.m_w))
-print("m_c: " + str(colderProperties.m_c))
-# print("Shell Properties C: " + str(ShellData.c))
-
 # D Flow Area's
-
 def FlowAreasTube():
-    capA_t = ((float(tubingProperties.capN_t) * math.pi) * (math.pow(tubingProperties.capID_t, 2))) / (4 * tubingProperties.capN_p)
-    print(capA_t)
-
+        flowData.capA_t = ((float(tubingProperties.capN_t) * math.pi) * (math.pow(tubingProperties.capID_t, 2))) / (4 * tubingProperties.capN_p)
+        return flowData.capA_t
 
 def FlowAreasShell():
-    capA_s = (shellProperties.capD_S * shellProperties.c * float(shellProperties.capB)) / shellProperties.capP_t
-    print(capA_s)
+        flowData.capA_s = (shellProperties.capD_S * shellProperties.c * float(shellProperties.capB)) / shellProperties.capP_t
+        return flowData.capA_s
 
-# FlowAreasTube()
-# FlowAreasShell()
+FlowAreasTube()
+FlowAreasShell()
+
+
+
+# FlowAreas.FlowAreasTube()
 
 # E Fluid Velocities
-
-def FluidVelocityTube():
-    capA_t = 
