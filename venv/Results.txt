@@ -1,0 +1,48 @@
+Warmer Properties for Distilled Water Inputs
+m_w: 25.0
+p: 25.0
+k_f: 25.0
+v: 25.0
+capT1: 25.0
+capC_p: 4179.0
+alpha: 25.0
+capPR: 25.0
+
+Colder Properties for Raw Water Inputs
+m_c: 25.0
+p: 25.0
+k_f: 25.0
+v: 25.0
+capt1: 25.0
+capC_p: 4181.0
+alpha: 25.0
+capPR: 25.0
+
+Tubing Inputs
+capID_t: 16.55
+capN_t: 196.0
+capOD_t: 19.07
+capN_p: 2.0
+
+Shell Inputs
+capD_S: 438.2
+capB: 304.8
+capN_b: 15.0
+capP_t: 25.4
+c: 6.33
+
+#D Flow Area Results
+capA_t: 21082.00700409702
+capA_s: 33285.672
+
+#E Fluid Velocities Results
+capV_t: 4.743381404842825e-05
+capV_s: 3.0042956621095108e-05
+
+#F Shell Equivalent Diameter Results
+capD_eSquare: 24.005155987484926
+capD_eTriangle: 18.19000992917446
+
+#G Reynolds Numbers Results
+capRe_s: 2.1859267169579105e-05
+capRe_t: 3.14011849000595e-05
